@@ -1,5 +1,5 @@
 // console.log('Client side javascript file is loaded!');
-
+//
 //-----------------------------------------------------------------
 //fetch API (client side Javascript) sample call
 // fetch('http://puzzle.mead.io/puzzle').then((response) => {
