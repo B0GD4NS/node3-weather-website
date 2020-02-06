@@ -22,10 +22,13 @@ const forecast = (latitude, longitude, callback) => {
         } else if (body.error) {
             callback('Unable to find location in weather service', undefined);
         } else {
+            //console.log(body.daily.data[0]);
             callback(undefined, {
                 daily_summary: body.daily.data[0].summary,
                 current_temperature: body.currently.temperature,
-                current_probability: body.currently.precipProbability
+                current_probability: body.currently.precipProbability,
+                temperature_high: body.daily.data[0].temperatureHigh,
+                temperature_low: body.daily.data[0].temperatureLow
             });
         }
     });

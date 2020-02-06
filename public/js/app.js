@@ -18,6 +18,7 @@ const search = document.querySelector('input');
 
 const messageOne = document.querySelector('#message-1');
 const messageTwo = document.querySelector('#message-2');
+const messageThree = document.querySelector('#message-3');
 
 
 // messageOne.textContent = 'From Javascript';
@@ -27,6 +28,7 @@ weatherForm.addEventListener('submit', (e) => {
 
     messageOne.textContent = 'Loading data...';
     messageTwo.textContent = '';
+    messageThree.textContent = '';
 
     const address = search.value;
     fetch('/weather?address=' + encodeURIComponent(address))
@@ -38,11 +40,16 @@ weatherForm.addEventListener('submit', (e) => {
                 }
 
                 // console.log('Location: ', data.location);
-                // console.log('Forecast: ', data.forecast);
+                //console.log('Forecast: ', data.forecast);
                 messageOne.textContent = data.location;
                 messageTwo.textContent = data.forecast.daily_summary
                     + ', aktualna temperatura: ' + data.forecast.current_temperature
                     + ', opady: ' + data.forecast.current_probability + ' %';
+
+                messageThree.textContent = 'Temperatura min.: '
+                    + data.forecast.temperature_low
+                    + ', temperatura maks.: '
+                    + data.forecast.temperature_high;
             });
         });
 
