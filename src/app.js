@@ -9,6 +9,9 @@ const forecast = require('./utils/forecast');
 
 
 const app = express();
+//on heroku we assign port dynamically, but on the localhost we can set fix value
+const port = process.env.PORT || 3000;
+
 
 // define path for Express config
 const publicDirectoryPath = path.join(__dirname, '../public');
@@ -110,6 +113,6 @@ app.get('*', (req, res) => {
     });
 });
 
-app.listen(3000, () => {
-    console.log('Server is up on port 3000.');
+app.listen(port, () => {
+    console.log('Server is up on port %i.', port);
 });
